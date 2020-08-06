@@ -23,7 +23,6 @@ class RedditEntryTableViewCell: UITableViewCell {
             self.cellImage.image = thumbnailImage
             self.cellImage.isHidden = false
         }
-        print(self.cellLabel.text as Any)
     }
     
     override func prepareForReuse() {
