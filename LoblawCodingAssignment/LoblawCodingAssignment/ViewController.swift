@@ -15,13 +15,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var tableData: [RedditEntry]?
     let redditCellIdentifier = "redditDataCell"
+    let redditDataNoImageCell = "redditDataNoImageCell"
     var indexOfValueToPass = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         self.title = "Swift News"
-
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 600
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,13 +76,21 @@ extension ViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: redditCellIdentifier, for: indexPath) as? RedditEntryTableViewCell
-        guard let redditEntry = tableData?[indexPath.row] else { return UITableViewCell() }
-        cell?.configure(redditEntry: redditEntry)
-        return cell ?? UITableViewCell()
+        
+        if (tableData?[indexPath.row].thumbnail?.hasSuffix("jpg") != false) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: redditCellIdentifier, for: indexPath) as? RedditEntryTableViewCell
+            guard let redditEntry = tableData?[indexPath.row] else { return UITableViewCell() }
+            cell?.configure(redditEntry: redditEntry)
+            return cell ?? UITableViewCell()
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: redditDataNoImageCell, for: indexPath) as? RedditEntryNoImageTableViewCell
+            guard let redditEntry = tableData?[indexPath.row] else { return UITableViewCell() }
+            cell?.configure(redditEntry: redditEntry)
+            return cell ?? UITableViewCell()
+        }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    /*func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let redditEntry = tableData?[indexPath.row]
         if let thumbnailURLStr = redditEntry?.thumbnail {
             //print("THUMBNAILURL: \(thumbnailURLStr)")
@@ -95,7 +105,7 @@ extension ViewController {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
-    }
+    }*/
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
