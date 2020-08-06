@@ -14,6 +14,10 @@
 		956F43EC24DB6EC400BECBC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956F43EB24DB6EC400BECBC6 /* Assets.xcassets */; };
 		956F43EF24DB6EC400BECBC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956F43ED24DB6EC400BECBC6 /* LaunchScreen.storyboard */; };
 		956F43FA24DB6EC400BECBC6 /* LoblawCodingAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F43F924DB6EC400BECBC6 /* LoblawCodingAssignmentTests.swift */; };
+		956F440524DB758300BECBC6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F440424DB758300BECBC6 /* DataManager.swift */; };
+		956F440624DB758300BECBC6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F440424DB758300BECBC6 /* DataManager.swift */; };
+		956F440824DB7ACE00BECBC6 /* RedditData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F440724DB7ACE00BECBC6 /* RedditData.swift */; };
+		956F440924DB7ACE00BECBC6 /* RedditData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F440724DB7ACE00BECBC6 /* RedditData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,8 @@
 		956F43F524DB6EC400BECBC6 /* LoblawCodingAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoblawCodingAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		956F43F924DB6EC400BECBC6 /* LoblawCodingAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoblawCodingAssignmentTests.swift; sourceTree = "<group>"; };
 		956F43FB24DB6EC400BECBC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		956F440424DB758300BECBC6 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		956F440724DB7ACE00BECBC6 /* RedditData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,8 @@
 				956F43EB24DB6EC400BECBC6 /* Assets.xcassets */,
 				956F43ED24DB6EC400BECBC6 /* LaunchScreen.storyboard */,
 				956F43F024DB6EC400BECBC6 /* Info.plist */,
+				956F440424DB758300BECBC6 /* DataManager.swift */,
+				956F440724DB7ACE00BECBC6 /* RedditData.swift */,
 			);
 			path = LoblawCodingAssignment;
 			sourceTree = "<group>";
@@ -201,7 +209,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				956F43E724DB6EC200BECBC6 /* ViewController.swift in Sources */,
+				956F440524DB758300BECBC6 /* DataManager.swift in Sources */,
 				956F43E324DB6EC200BECBC6 /* AppDelegate.swift in Sources */,
+				956F440824DB7ACE00BECBC6 /* RedditData.swift in Sources */,
 				956F43E524DB6EC200BECBC6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,7 +220,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				956F440924DB7ACE00BECBC6 /* RedditData.swift in Sources */,
 				956F43FA24DB6EC400BECBC6 /* LoblawCodingAssignmentTests.swift in Sources */,
+				956F440624DB758300BECBC6 /* DataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
