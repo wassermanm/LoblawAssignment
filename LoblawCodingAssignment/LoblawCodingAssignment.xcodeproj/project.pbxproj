@@ -18,6 +18,10 @@
 		956F440624DB758300BECBC6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F440424DB758300BECBC6 /* DataManager.swift */; };
 		956F440824DB7ACE00BECBC6 /* RedditData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F440724DB7ACE00BECBC6 /* RedditData.swift */; };
 		956F440924DB7ACE00BECBC6 /* RedditData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F440724DB7ACE00BECBC6 /* RedditData.swift */; };
+		95846EAE24DC406E00A902CE /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95846EAD24DC406E00A902CE /* DetailsViewController.swift */; };
+		95846EAF24DC406E00A902CE /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95846EAD24DC406E00A902CE /* DetailsViewController.swift */; };
+		95E4463A24DBA4FB001F0A04 /* RedditEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E4463924DBA4FB001F0A04 /* RedditEntryTableViewCell.swift */; };
+		95E4463B24DBA4FB001F0A04 /* RedditEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E4463924DBA4FB001F0A04 /* RedditEntryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,8 @@
 		956F43FB24DB6EC400BECBC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		956F440424DB758300BECBC6 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		956F440724DB7ACE00BECBC6 /* RedditData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditData.swift; sourceTree = "<group>"; };
+		95846EAD24DC406E00A902CE /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		95E4463924DBA4FB001F0A04 /* RedditEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditEntryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,8 @@
 				956F43F024DB6EC400BECBC6 /* Info.plist */,
 				956F440424DB758300BECBC6 /* DataManager.swift */,
 				956F440724DB7ACE00BECBC6 /* RedditData.swift */,
+				95E4463924DBA4FB001F0A04 /* RedditEntryTableViewCell.swift */,
+				95846EAD24DC406E00A902CE /* DetailsViewController.swift */,
 			);
 			path = LoblawCodingAssignment;
 			sourceTree = "<group>";
@@ -210,7 +218,9 @@
 			files = (
 				956F43E724DB6EC200BECBC6 /* ViewController.swift in Sources */,
 				956F440524DB758300BECBC6 /* DataManager.swift in Sources */,
+				95E4463A24DBA4FB001F0A04 /* RedditEntryTableViewCell.swift in Sources */,
 				956F43E324DB6EC200BECBC6 /* AppDelegate.swift in Sources */,
+				95846EAE24DC406E00A902CE /* DetailsViewController.swift in Sources */,
 				956F440824DB7ACE00BECBC6 /* RedditData.swift in Sources */,
 				956F43E524DB6EC200BECBC6 /* SceneDelegate.swift in Sources */,
 			);
@@ -222,7 +232,9 @@
 			files = (
 				956F440924DB7ACE00BECBC6 /* RedditData.swift in Sources */,
 				956F43FA24DB6EC400BECBC6 /* LoblawCodingAssignmentTests.swift in Sources */,
+				95E4463B24DBA4FB001F0A04 /* RedditEntryTableViewCell.swift in Sources */,
 				956F440624DB758300BECBC6 /* DataManager.swift in Sources */,
+				95846EAF24DC406E00A902CE /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +389,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XKN99LRMT9;
 				INFOPLIST_FILE = LoblawCodingAssignment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -395,6 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XKN99LRMT9;
 				INFOPLIST_FILE = LoblawCodingAssignment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

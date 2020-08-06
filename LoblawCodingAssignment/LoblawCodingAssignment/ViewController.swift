@@ -8,31 +8,39 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var tableData: [RedditEntries]?
+    var tableData: [RedditEntry]?
+    let redditCellIdentifier = "redditDataCell"
+    var indexOfValueToPass = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        tableView.tableFooterView = UIView()
+        self.title = "Swift News"
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.activityIndicator.color = UIColor.black
+        if #available(iOS 13.0, *) {
+            activityIndicator.style = .large
+        } else {
+            activityIndicator.style = .whiteLarge
+        }
         self.addSpinner()
         DataManager.sharedInstance.getRedditStories { [weak self](success, entries, error) in
             if success {
                 self?.tableData = entries
                 DispatchQueue.main.async {
                     self?.removeSpinner()
+                    self?.tableView.reloadData()
                 }
-                
             } else {
-                
                 DispatchQueue.main.async {
                     self?.removeSpinner()
                     self?.presentAlert(title: "Error", message: error)
@@ -41,9 +49,7 @@ class ViewController: UIViewController {
         }
     }
 
-
     //MARK: - Utility Methods
-    
     private func addSpinner() {
         self.activityIndicator.isHidden =  false
         self.activityIndicator.startAnimating()
@@ -61,3 +67,47 @@ class ViewController: UIViewController {
     }
 }
 
+//MARK: UITableViewDelegate Methods
+extension ViewController {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: redditCellIdentifier, for: indexPath) as? RedditEntryTableViewCell
+        guard let redditEntry = tableData?[indexPath.row] else { return UITableViewCell() }
+        cell?.configure(redditEntry: redditEntry)
+        return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let redditEntry = tableData?[indexPath.row]
+        if let thumbnailURLStr = redditEntry?.thumbnail {
+            //print("THUMBNAILURL: \(thumbnailURLStr)")
+            
+            if thumbnailURLStr.hasSuffix(".jpg") {
+                return 94
+            }
+        }
+        return 40
+    }
+
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        self.indexOfValueToPass = indexPath.row
+        performSegue(withIdentifier: "toDetails", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetails" {
+            if let detailController = segue.destination as? DetailsViewController {
+                detailController.data = tableData?[self.indexOfValueToPass]
+            }
+        }
+    }
+}

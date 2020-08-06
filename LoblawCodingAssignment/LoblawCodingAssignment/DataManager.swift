@@ -7,35 +7,31 @@
 //
 
 import Foundation
+import UIKit
 
 class DataManager {
     
     static let sharedInstance = DataManager()
     private let urlString     = "https://www.reddit.com/r/swift/.json"
     
-    
     private init() {
     }
     
-    public func getRedditStories( _ completion: @escaping (_ success: Bool, _ message: Array<RedditEntries>, _ errorMessage: String) -> ()) {
-        //data.children.data.title
-        //data.children.data.thumbnail
-        //data.children.data.selftext
+    public func getRedditStories( _ completion: @escaping (_ success: Bool, _ message: Array<RedditEntry>, _ errorMessage: String) -> ()) {
         let errorMessage = "There was an error retrieving data"
-        var entries = [RedditEntries]()
-        let session = URLSession.shared
+        var entries      = [RedditEntry]()
+        let session      = URLSession.shared
+        
         if let url = URL(string: urlString) {
             let _: Void = session.dataTask(with: url, completionHandler: { data, response, error in
-                
-                
-                if let error = error { print(error); return }
+                if let error = error {
+                    print(error)
+                    return
+                }
                 do {
-                    let decoder = JSONDecoder()
-                    //decoder.keyDecodingStrategy = .convertFromSnakeCase
-
+                    let decoder    = JSONDecoder()
                     let parsedData = try decoder.decode(RedditData.self, from: data!)
-                    //successBlock(model)
-                    print("model is \(parsedData)")
+
                     for element in parsedData.data.children {
                         entries.append(element.data)
                     }
@@ -46,14 +42,17 @@ class DataManager {
                     print(error)
                     completion(true, entries, errorMessage)
                 }
-                
-                
-                
-               
-                
-                
-                }).resume()
+            }).resume()
         }
-        
+    }
+    
+    func getThumbnailImage(thumbnailURLStr: String) -> UIImage? {
+        if let thumbnailURL = URL(string: thumbnailURLStr) {
+            let data = try? Data(contentsOf: thumbnailURL)
+            if let imageData = data {
+                return UIImage(data: imageData)
+            }
+        }
+        return nil
     }
 }

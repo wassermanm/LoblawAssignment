@@ -14,29 +14,16 @@ struct RedditData : Decodable {
 }
 
 struct Children: Decodable {
-    let children: [Data]
+    let children: [ChildrenData]
 }
 
-struct Data: Decodable {
-    let data: RedditEntries
+struct ChildrenData: Decodable {
+    let data: RedditEntry
 }
 
-struct RedditEntries: Decodable {
+struct RedditEntry: Decodable {
     let title: String
     let selftext: String
-    let preview: Images?
+    let thumbnail: String?
 }
 
-struct Images: Decodable {
-    let images: [ImageData]?
-}
-
-struct ImageData: Decodable {
-    let source: Source
-}
-
-struct Source: Decodable {
-    let url: String?
-    let width: Int?
-    let height: Int?
-}
