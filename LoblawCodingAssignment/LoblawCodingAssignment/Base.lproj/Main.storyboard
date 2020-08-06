@@ -55,7 +55,7 @@
                                             <outlet property="cellLabel" destination="8O5-wM-tg2" id="jVv-DL-JfV"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="redditDataNoImageCell" rowHeight="44" id="i2u-mh-215" customClass="RedditEntryNoImageTableViewCell" customModule="LoblawCodingAssignment" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="redditCellNoImageIdentifier" rowHeight="44" id="i2u-mh-215" customClass="RedditEntryNoImageTableViewCell" customModule="LoblawCodingAssignment" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="122" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i2u-mh-215" id="6uk-kC-vIk">
@@ -88,7 +88,7 @@
                                 </connections>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="4n7-3P-Czc">
-                                <rect key="frame" x="189" y="429" width="37" height="37"/>
+                                <rect key="frame" x="187.22535211269042" y="430.29577464788736" width="37.000000000000114" height="36.999999999999972"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
@@ -138,15 +138,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="5aY-7T-d0l" firstAttribute="leading" secondItem="YK6-4g-csP" secondAttribute="leading" constant="20" id="5rU-RD-OHT"/>
-                            <constraint firstItem="5aY-7T-d0l" firstAttribute="top" secondItem="YK6-4g-csP" secondAttribute="top" constant="12" id="7Ng-rj-whf"/>
                             <constraint firstItem="tJw-Am-j6K" firstAttribute="leading" secondItem="W4v-qr-aZU" secondAttribute="leadingMargin" id="Dyt-xv-Yf1"/>
                             <constraint firstItem="tJw-Am-j6K" firstAttribute="bottom" secondItem="YK6-4g-csP" secondAttribute="bottom" id="IsF-S1-Qhs"/>
                             <constraint firstItem="tJw-Am-j6K" firstAttribute="top" secondItem="YK6-4g-csP" secondAttribute="top" constant="130" id="JCe-RF-gQh"/>
                             <constraint firstItem="tJw-Am-j6K" firstAttribute="trailing" secondItem="W4v-qr-aZU" secondAttribute="trailingMargin" id="Y3A-gs-0YH"/>
                             <constraint firstItem="5aY-7T-d0l" firstAttribute="top" secondItem="YK6-4g-csP" secondAttribute="top" constant="12" id="bCq-hk-WPu"/>
                             <constraint firstItem="5aY-7T-d0l" firstAttribute="leading" secondItem="YK6-4g-csP" secondAttribute="leading" constant="20" id="hLd-dd-hT7"/>
-                            <constraint firstItem="tJw-Am-j6K" firstAttribute="top" secondItem="5aY-7T-d0l" secondAttribute="bottom" constant="18" id="i28-Rc-DnL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YK6-4g-csP"/>
                     </view>

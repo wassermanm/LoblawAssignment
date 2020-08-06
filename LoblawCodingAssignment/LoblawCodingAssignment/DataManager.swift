@@ -14,8 +14,7 @@ class DataManager {
     static let sharedInstance = DataManager()
     private let urlString     = "https://www.reddit.com/r/swift/.json"
     
-    private init() {
-    }
+    private init() {}
     
     public func getRedditStories( _ completion: @escaping (_ success: Bool, _ message: Array<RedditEntry>, _ errorMessage: String) -> ()) {
         let errorMessage = "There was an error retrieving data"
@@ -24,8 +23,8 @@ class DataManager {
         
         if let url = URL(string: urlString) {
             let _: Void = session.dataTask(with: url, completionHandler: { data, response, error in
-                if let error = error {
-                    print(error)
+                if let _ = error {
+                    completion(false, entries, errorMessage)
                     return
                 }
                 do {
@@ -39,8 +38,7 @@ class DataManager {
                         completion(true, entries, "")
                     })
                 } catch {
-                    print(error)
-                    completion(true, entries, errorMessage)
+                    completion(false, entries, errorMessage)
                 }
             }).resume()
         }

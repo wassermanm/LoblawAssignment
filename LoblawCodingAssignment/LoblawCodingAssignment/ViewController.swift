@@ -14,16 +14,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var tableData: [RedditEntry]?
-    let redditCellIdentifier = "redditDataCell"
-    let redditDataNoImageCell = "redditDataNoImageCell"
-    var indexOfValueToPass = 0
+    let redditCellIdentifier        = "redditDataCell"
+    let redditCellNoImageIdentifier = "redditCellNoImageIdentifier"
+    let segueIdentifier             = "toDetails"
+    var indexOfValueToPass          = 0
     
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         self.title = "Swift News"
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 600
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,21 +37,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.addSpinner()
         DataManager.sharedInstance.getRedditStories { [weak self](success, entries, error) in
             if success {
-                self?.tableData = entries
-                DispatchQueue.main.async {
-                    self?.removeSpinner()
-                    self?.tableView.reloadData()
-                }
+                self?.handleDataRetrivealSuccess(entries: entries)
             } else {
-                DispatchQueue.main.async {
-                    self?.removeSpinner()
-                    self?.presentAlert(title: "Error", message: error)
-                }
+                self?.handleDataRetrievalFailure(error: error)
             }
         }
     }
+    
+    override func viewWillLayoutSubviews() {
+        self.activityIndicator.translatesAutoresizingMaskIntoConstraints = true
+        self.activityIndicator.frame = self.view.bounds
+    }
 
     //MARK: - Utility Methods
+    
+    private func handleDataRetrivealSuccess(entries: [RedditEntry]) {
+        self.tableData = entries
+        DispatchQueue.main.async {
+            self.removeSpinner()
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func handleDataRetrievalFailure(error: String) {
+        DispatchQueue.main.async {
+            self.removeSpinner()
+            self.presentAlert(title: "Error", message: error)
+        }
+    }
     private func addSpinner() {
         self.activityIndicator.isHidden =  false
         self.activityIndicator.startAnimating()
@@ -76,47 +89,29 @@ extension ViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if (tableData?[indexPath.row].thumbnail?.hasSuffix("jpg") != false) {
             let cell = tableView.dequeueReusableCell(withIdentifier: redditCellIdentifier, for: indexPath) as? RedditEntryTableViewCell
             guard let redditEntry = tableData?[indexPath.row] else { return UITableViewCell() }
             cell?.configure(redditEntry: redditEntry)
             return cell ?? UITableViewCell()
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: redditDataNoImageCell, for: indexPath) as? RedditEntryNoImageTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: redditCellNoImageIdentifier, for: indexPath) as? RedditEntryNoImageTableViewCell
             guard let redditEntry = tableData?[indexPath.row] else { return UITableViewCell() }
             cell?.configure(redditEntry: redditEntry)
             return cell ?? UITableViewCell()
         }
     }
     
-    /*func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let redditEntry = tableData?[indexPath.row]
-        if let thumbnailURLStr = redditEntry?.thumbnail {
-            //print("THUMBNAILURL: \(thumbnailURLStr)")
-            
-            if thumbnailURLStr.hasSuffix(".jpg") {
-                return 94
-            }
-        }
-        return 40
-    }
-
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }*/
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         self.indexOfValueToPass = indexPath.row
-        performSegue(withIdentifier: "toDetails", sender: nil)
+        performSegue(withIdentifier: segueIdentifier, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetails" {
+        if segue.identifier == segueIdentifier {
             if let detailController = segue.destination as? DetailsViewController {
-                detailController.data = tableData?[self.indexOfValueToPass]
+                detailController.redditEntry = tableData?[self.indexOfValueToPass]
             }
         }
     }

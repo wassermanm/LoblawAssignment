@@ -11,10 +11,6 @@ import UIKit
 class RedditEntryNoImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -23,12 +19,6 @@ class RedditEntryNoImageTableViewCell: UITableViewCell {
     
     func configure(redditEntry: RedditEntry) {
         self.cellLabel.text = redditEntry.title
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

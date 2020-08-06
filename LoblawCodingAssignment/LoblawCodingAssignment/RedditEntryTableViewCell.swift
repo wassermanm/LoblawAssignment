@@ -12,11 +12,6 @@ class RedditEntryTableViewCell: UITableViewCell {
     @IBOutlet weak var cellLabel: UILabel!
     @IBOutlet weak var cellImage: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func configure(redditEntry: RedditEntry) {
         self.cellLabel.text = redditEntry.title
         if let thumbnailURLStr = redditEntry.thumbnail, let thumbnailImage = DataManager.sharedInstance.getThumbnailImage(thumbnailURLStr: (thumbnailURLStr)) {
@@ -30,11 +25,4 @@ class RedditEntryTableViewCell: UITableViewCell {
         self.cellImage.isHidden = true
         self.cellLabel.text     = nil
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
