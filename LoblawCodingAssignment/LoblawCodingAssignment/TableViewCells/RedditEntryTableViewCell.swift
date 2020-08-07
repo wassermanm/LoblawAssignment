@@ -14,7 +14,7 @@ class RedditEntryTableViewCell: UITableViewCell {
     
     func configure(redditEntry: RedditEntry) {
         self.cellLabel.text = redditEntry.title
-        if let thumbnailURLStr = redditEntry.thumbnail, let thumbnailImage = DataManager.sharedInstance.getThumbnailImage(thumbnailURLStr: (thumbnailURLStr)) {
+        if let thumbnailImage = DataManager.sharedInstance.getImageFromCache(title: redditEntry.title) {
             self.cellImage.image = thumbnailImage
             self.cellImage.isHidden = false
         }

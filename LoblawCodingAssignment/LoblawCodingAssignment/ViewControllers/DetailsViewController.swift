@@ -20,20 +20,12 @@ class DetailsViewController: UIViewController {
         self.title = redditEntry?.title
         self.entryTextView.text = redditEntry?.selftext
         
-        if let thumbnailURLStr = redditEntry?.thumbnail, thumbnailURLStr.hasSuffix("jpg") != false {
-            guard let thumbnailImage = DataManager.sharedInstance.getThumbnailImage(thumbnailURLStr: (thumbnailURLStr)) else {
-                handleNoImage()
-                return
-            }
+        if let title = redditEntry?.title, let thumbnailImage = DataManager.sharedInstance.getImageFromCache(title: title) {
             self.entryImage.image    = thumbnailImage
             self.entryImage.isHidden = false
         } else {
-            handleNoImage()
+            self.entryImage.isHidden = true
+            self.textViewDistanceToTopConstraint.constant = 10
         }
-    }
-    
-    private func handleNoImage() {
-        self.entryImage.isHidden = true
-        self.textViewDistanceToTopConstraint.constant = 10
     }
 }
