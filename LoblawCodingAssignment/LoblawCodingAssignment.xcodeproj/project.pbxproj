@@ -73,6 +73,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		953C581224DD57A200143DC2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				956F43E624DB6EC200BECBC6 /* ViewController.swift */,
+				95846EAD24DC406E00A902CE /* DetailsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		953C581324DD57E100143DC2 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				95E4463924DBA4FB001F0A04 /* RedditEntryTableViewCell.swift */,
+				953C580F24DC5CF300143DC2 /* RedditEntryNoImageTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		953C581424DD581E00143DC2 /* Networking+Model */ = {
+			isa = PBXGroup;
+			children = (
+				956F440424DB758300BECBC6 /* DataManager.swift */,
+				956F440724DB7ACE00BECBC6 /* RedditData.swift */,
+			);
+			path = "Networking+Model";
+			sourceTree = "<group>";
+		};
 		956F43D624DB6EC200BECBC6 = {
 			isa = PBXGroup;
 			children = (
@@ -94,18 +121,15 @@
 		956F43E124DB6EC200BECBC6 /* LoblawCodingAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				953C581424DD581E00143DC2 /* Networking+Model */,
+				953C581324DD57E100143DC2 /* TableViewCells */,
+				953C581224DD57A200143DC2 /* ViewControllers */,
 				956F43E224DB6EC200BECBC6 /* AppDelegate.swift */,
 				956F43E424DB6EC200BECBC6 /* SceneDelegate.swift */,
-				956F43E624DB6EC200BECBC6 /* ViewController.swift */,
 				956F43E824DB6EC200BECBC6 /* Main.storyboard */,
 				956F43EB24DB6EC400BECBC6 /* Assets.xcassets */,
 				956F43ED24DB6EC400BECBC6 /* LaunchScreen.storyboard */,
 				956F43F024DB6EC400BECBC6 /* Info.plist */,
-				956F440424DB758300BECBC6 /* DataManager.swift */,
-				956F440724DB7ACE00BECBC6 /* RedditData.swift */,
-				95E4463924DBA4FB001F0A04 /* RedditEntryTableViewCell.swift */,
-				953C580F24DC5CF300143DC2 /* RedditEntryNoImageTableViewCell.swift */,
-				95846EAD24DC406E00A902CE /* DetailsViewController.swift */,
 			);
 			path = LoblawCodingAssignment;
 			sourceTree = "<group>";
